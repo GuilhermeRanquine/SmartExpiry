@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16 #Usa a imagem oficial do PostgreSQL versão 16
+    container_name: smartexpiry_db # Nome do container para facilitar a identificação
+    restart: always
+    environment:
+      POSTGRES_USER: smartexpiry # Nome do usuário do banco de dados
+      POSTGRES_PASSWORD: smartexpiry123
+      POSTGRES_DB: smartexpiry
+    ports:
+      - "5432:5432" # Expõe a porta padrão do PostgreSQL para acesso externo
+    volumes: # Salva os dados do banco de dados em um volume para persistência
+      - postgres_data:/var/lib/postgresql/data
+
+volumes: 
+  postgres_data:
